@@ -1,7 +1,5 @@
----
-id: section8
----
-# Version 版本管理和合并策略
+# Version版本管理和合并策略
+
 ## 简介
 
 `LevelDB`中使用`VersionSet`来管理读写流程中的不同`Version`，每一个`Version`包含如图信息：
@@ -41,7 +39,7 @@ id: section8
 
 ### 版本变换
 
-```c++
+```cpp showLineNumbers
 // edit 描述了哪些文件需要删除，哪些需要新增
 // edit 来源有:
 //     1. imm 表持久化后，需要新增文件
@@ -122,7 +120,7 @@ Status VersionSet::LogAndApply(VersionEdit* edit, port::Mutex* mu) {
 
 ### 得分计算
 
-```c++
+```cpp showLineNumbers
 void VersionSet::Finalize(Version* v) {
   int best_level = -1;
   double best_score = -1;
@@ -181,7 +179,7 @@ void Apply(const VersionEdit* edit) {
 
 ### 合并策略
 
-```c++
+```cpp showLineNumbers
 Compaction* VersionSet::PickCompaction() {
   Compaction* c;
   int level;

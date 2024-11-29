@@ -72,6 +72,7 @@ const config: Config = {
         src: 'img/favicon.ico',
       },
       items: [
+        { to: '/', label: 'About.Me', position: 'left' },
         { to: '/docs', label: 'Article', position: 'right' },
         { to: '/blog', label: 'Blog', position: 'right' },
         { to: '/project', label: 'Projects', position: 'right' },
@@ -81,6 +82,10 @@ const config: Config = {
     footer: {
       style: 'light',
       copyright: `Copyright © ${new Date().getFullYear()} ZhengMao.Ye. ICP备案号：<a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021000119号-1</a>.`,
+    },
+    prism: {
+      theme: prismThemes.nightOwlLight,
+      additionalLanguages: ['c', 'cpp', 'rust', 'python', 'json', 'yaml'],
     },
   } satisfies Preset.ThemeConfig,
 };

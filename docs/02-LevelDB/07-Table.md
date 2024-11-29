@@ -1,12 +1,10 @@
----
-id: section7
----
-# Table 查询磁盘数据
+# Table查询磁盘数据
+
 ## 简介
 
 前文已经描述如何通过 `TableBuilder` 将 `MemTable` 持久化到磁盘中，本文描述其逆操作，即如何从磁盘文件读取数据到内存中，并提供迭代器进行访问。
 
-具体写入流程以及文件格式参考[【LevelDB】 TableBuilder 持久化 MemTable 数据](https://www.yezhem.com/index.php/archives/68/)。
+具体写入流程以及文件格式参考[TableBuilder 持久化 MemTable 数据](06-TableBuilder.md)。
 
 读入流程总体顺序如下：
 
@@ -20,7 +18,7 @@ id: section7
 
 ### Table
 
-```c++
+```cpp showLineNumbers
 // open时需要读取index block, meta block 内容
 // 再根据 meta block 内容读取 filter block 内容
 // data block 内容不读取
@@ -184,7 +182,7 @@ Iterator* Table::BlockReader(void* arg, const ReadOptions& options,
 
 ### FilterBlockReader
 
-```c++
+```cpp showLineNumbers
 FilterBlockReader::FilterBlockReader(const FilterPolicy* policy,
                                      const Slice& contents)
     : policy_(policy), data_(nullptr), offset_(nullptr), num_(0), base_lg_(0) {
@@ -221,7 +219,7 @@ bool FilterBlockReader::KeyMayMatch(uint64_t block_offset, const Slice& key) {
 
 ### TwoLevelIterator
 
-```c++
+```cpp showLineNumbers
 // 读取 data 块数据
 void TwoLevelIterator::InitDataBlock() {
   if (!index_iter_.Valid()) {

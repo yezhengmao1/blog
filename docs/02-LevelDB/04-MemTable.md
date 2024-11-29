@@ -1,7 +1,4 @@
----
-id: section4
----
-# MemTable 键值对缓存表
+# MemTable键值对缓存表
 ## 简介
 
 `Memtable` 仅仅只是对 `SkipList` 和比较器的简单包装，将要插入的 `Key / Value` 两种类型数据最合并处理并插入到 `SkipList` 中。
@@ -10,13 +7,15 @@ id: section4
 
 `Memtable` 对于 `KV` 数据处理如下图所示：
 
-![leveldb-MemTable-0](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-MemTable-0.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-MemTable-0.png" alt="leveldb-MemTable-0" style={{ width: '50%' }}/>
+</div>
 
 ## 实现
 
 ### 构造函数
 
-```c++
+```cpp showLineNumbers
 class MemTable {
 public:
     // 采用引用计数的方式来控制析构
@@ -73,7 +72,7 @@ int MemTable::KeyComparator::operator()(const char *aptr, const char *bptr) cons
 
 ### 插入
 
-```c++
+```cpp showLineNumbers
 // memtable 对于 kev 和 value 的数据封装见简介中图
 void MemTable::Add(SequenceNumber s, ValueType type, const Slice &key,
                    const Slice &value) {
@@ -112,7 +111,7 @@ void MemTable::Add(SequenceNumber s, ValueType type, const Slice &key,
 
 ## 迭代器
 
-```c++
+```cpp showLineNumbers
 // MemTable的迭代器是对 SkipList 迭代器的封装
 class MemTableIterator : public Iterator {
 public:
@@ -169,7 +168,7 @@ private:
 
 ### 查找
 
-```c++
+```cpp showLineNumbers
 bool MemTable::Get(const LookupKey &key, std::string *value, Status *s) {
     Slice memkey = key.memtable_key();
     Table::Iterator iter(&table_);

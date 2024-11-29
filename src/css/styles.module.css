@@ -1,0 +1,47 @@
+.post {
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+.profile {
+    display: block;
+    width: 30%;
+    float: right !important;
+    align-items: center;
+}
+
+
+.intro {
+    width: 60%;
+}
+
+.my_avatar {
+    border-radius: 0px;
+}
+
+.publications {
+    margin-bottom: 10px;
+}
+
+.pub_years {
+    display: inline-block;
+    width: 40%;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+
+.pub_span {
+    display: inline-block;
+    padding: 0 10px;
+    font-weight: 500;
+}
+
+.repos {
+    list-style: none;
+    margin-bottom: 10px;
+}

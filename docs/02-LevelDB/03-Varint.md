@@ -1,7 +1,5 @@
----
-id: section3
----
-# Varint 变长整数编码
+# Varint变长整数编码
+
 ## 简介
 
 `LevelDB` 提供一种序列化方法，将定长数据编码为变长数据。例如 `int32_t` 类型变量在内存中为 `4` 字节其值为 `0x01 0x00 0x00 0x00`，是否可以仅用 `1` 个字节 `0x01` 就能够存放该数据。
@@ -28,7 +26,7 @@ id: section3
 
 ### 编码
 
-```c++
+```cpp showLineNumbers
 // 判断 7 bit 一组需要多少组
 // 即编码后需要多少字节
 int VarintLength(uint64_t v) {
@@ -74,7 +72,7 @@ char *EncodeVarint32(char *dst, uint32_t v) {
 
 ## 解码
 
-```c++
+```cpp showLineNumbers
 // 解码函数入口，主要判断内存是否超出
 bool GetVarint32(Slice *input, uint32_t *value) {
     const char *p = input->data();

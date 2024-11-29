@@ -1,7 +1,5 @@
----
-id: section5
----
-# LRUCache 缓存和 HashTable 实现
+# LRUCache缓存和HashTable实现
+
 ## 简介
 
 访问数据库离不开对磁盘文件的访问，而磁盘访问时延远大于内存， `LevelDB` 利用缓存将部分磁盘数据缓存到内存当中，每次读取数据时优先读取缓存，未命中才读取磁盘数据。 `LevelDB` 中采用 `LRUCache` 作为缓存。
@@ -27,7 +25,7 @@ id: section5
 
 ### LRUHandle - 节点定义
 
-```c++
+```cpp showLineNumbers
 // 双向链表和HandleTable中节点数据 - LRUHandle
 struct LRUHandle {
     void *value; // 值
@@ -52,7 +50,7 @@ struct LRUHandle {
 
 ### HandleTable - 哈希表实现
 
-```c++
+```cpp showLineNumbers
 // HandleTable 线程不安全，需要外部保证
 class HandleTable {
 private:
@@ -158,7 +156,7 @@ public:
 
 ### LRUCache - LRU缓存实现
 
-```c++
+```cpp showLineNumbers
 // 访问线程安全
 class LRUCache {
 private:
@@ -342,7 +340,7 @@ Cache::Handle *LRUCache::Insert(const Slice &key, uint32_t hash, void *value,
 
 ### ShardedLRUCache 实现
 
-```c++
+```cpp showLineNumbers
 static const int kNumShardBits = 4;
 static const int kNumShards = 1 << kNumShardBits
     

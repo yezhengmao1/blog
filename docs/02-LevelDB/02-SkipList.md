@@ -1,7 +1,5 @@
----
-id: section2
----
-# SkipList 跳表
+# SkipList跳表
+
 ## 简介
 
 单向有序链表查找、插入和删除操作时间复杂度为 `O(n)` ，若在已查找到节点前提下，进行插入和删除时间复杂度为 `O(1)` 。
@@ -13,6 +11,7 @@ id: section2
 如此这般就能构造出跳表结构，如下图所示。
 
 ![leveldb-SkipList-1](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-1.png)
+
 
 在这种理想情况下，查找效率变为 `O(logn)` ，例如查找节点 4 流程如下：
 
@@ -38,7 +37,7 @@ id: section2
 
 ### 模板参数
 
-```c++
+```cpp showLineNumbers
 // Key        - 插入的数据类型
 // Comparator - 比较器，对 Key 类型数据进行比较，重载 bool operator() 函数
 template <typename Key, class Comparator> class SkipList {};
@@ -46,7 +45,7 @@ template <typename Key, class Comparator> class SkipList {};
 
 ### 构造函数
 
-```c++
+```cpp showLineNumbers
 // 链表节点
 template <typename Key, class Comparator>
 struct SkipList<Key, Comparator>::Node {
@@ -139,7 +138,7 @@ SkipList<Key, Comparator>::SkipList(Comparator cmp, Arena *arena)
 
 ### 查找
 
-```c++
+```cpp showLineNumbers
 // 直接调用 comparator 比较器比较
 // 因为链表是按照升序排列，如果 n->key 小于 key，即 key 应该在 n 之后
 template <typename Key, class Comparator>
@@ -240,7 +239,7 @@ typename SkipList<Key, Comparator>::Node *SkipList<Key, Comparator>::FindLast() 
 
 ### 插入
 
-```c++
+```cpp showLineNumbers
 // 随机一个高度值
 template <typename Key, class Comparator> int SkipList<Key, Comparator>::RandomHeight() {
     static const unsigned int kBranching = 4;
@@ -298,7 +297,7 @@ void SkipList<Key, Comparator>::Insert(const Key &key) {
 
 实现迭代器的访问方式，隐藏跳表的底层存放形式。
 
-```c++
+```cpp showLineNumbers
 class Iterator {
 private:
     // list_ 为跳表结构

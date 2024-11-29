@@ -1,7 +1,4 @@
----
-id: section6
----
-# TableBuilder 持久化 MemTable 数据
+# TableBuilder持久化MemTable数据
 ## 简介
 
 `LevelDB` 进行 `key-value` 写过程中，首先会将 `key-value` 数据存放在内存表 `MemTable` 结构当中，当 `MemTable` 超过设定域值时，使用 `TableBuilder` 将内存数据刷写到磁盘文件中。
@@ -61,7 +58,9 @@ id: section6
 
 `LevelDB` 支持使用过滤器，快速判断某个数据分块是否含有目标 `key` 值，从而避免读取整个数据分块，转而使用占用内存空间较少的过滤器数据。默认布隆过滤器基本思路如下图所示：
 
-![leveldb-Bloom_0](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Bloom_0.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Bloom_0.png" alt="leveldb-Bloom-0" style={{ width: '50%' }}/>
+</div>
 
 当写入数据分块时，过滤器记录当前数据区块的所有 `key` 值，对每一个 `key` 值进行 `k` 次哈希，填充到对应的过滤器数据区域中。对每个数据分区都生成一个这样的过滤器数据区域，最后需加入索引数组来记录过滤器数据对应的偏移量。 
 
@@ -81,13 +80,15 @@ id: section6
 
 ## 实现
 
-![leveldb-TableBuilder_1](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-TableBuilder_1.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-TableBuilder_1.png" alt="leveldb-TableBuilder-0" style={{ width: '50%' }}/>
+</div>
 
 依赖关系如图：`TableBuilder` 负责接收 `Key-Value` 数据，将数据传递给 `BlockBuilder` 和 `FilterBlockBuilder` 并在合适的时机使其进行刷盘操作，刷盘操作的偏移位置由 `BlockHandle` 记录。
 
 ### BlockBuilder
 
-```c++
+```cpp showLineNumbers
 class BlockBuilder {
 private:
     const Options *options_; // 配置项
@@ -173,7 +174,7 @@ void BlockBuilder::Add(const Slice &key, const Slice &value) {
 
 ### FilterBlockBuilder
 
-```c++
+```cpp showLineNumbers
 class FilterBlockBuilder {
 private:
     void GenerateFilter();
@@ -267,7 +268,7 @@ Slice FilterBlockBuilder::Finish() {
 
 ### TableBuilder
 
-```c++
+```cpp showLineNumbers
 class LEVELDB_EXPORT TableBuilder {
 private:
     // 这部分数据被封装在 TableBuilder::Rep 中
@@ -481,4 +482,3 @@ Status TableBuilder::Finish() {
     return r->status;
 }
 ```
-

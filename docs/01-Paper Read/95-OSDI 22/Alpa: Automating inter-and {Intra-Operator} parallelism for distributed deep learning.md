@@ -1,4 +1,4 @@
-# Alpa: Automating inter-and {Intra-Operator} parallelism for distributed deep learning
+# Alpa: Automating inter-and \{Intra-Operator\} parallelism for distributed deep learning
 
 ## 简介
 
