@@ -32,4 +32,4 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
     - name: Deploy with rsync
-      run: rsync -rav --delete build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/
+      run: rsync -e "ssh -v" -rav --delete build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/
