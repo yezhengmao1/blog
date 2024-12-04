@@ -6,7 +6,9 @@
 
 读者可以先自行尝试 [LRU缓存](https://leetcode-cn.com/problems/lru-cache/) 这道算法题加深对 `LRUCache` 的理解。
 
-![leveldb-LRUCache](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-LRUCache.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-LRUCache.png" style={{ width: '100%' }}/>
+</div>
 
 `LevelDB` 中采用 `HandleTable` （自实现的 `HashTable`） 和两个双向链表来实现 `LRUCache`。
 

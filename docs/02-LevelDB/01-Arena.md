@@ -9,7 +9,7 @@
 所以 `arena` 适合内存不断增加，且会常驻内存不需要随时释放的场景。
 
 <div style={{ textAlign: 'center' }}>
-  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Arena-0.png" alt="leveldb-Arena-0" style={{ width: '50%' }}/>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Arena-0.png" alt="leveldb-Arena-0" style={{ width: '40%' }}/>
 </div>
 
 内存分配如图，直接从固定大小的内存块中分配 `size` 大小的内存，返回其地址即可。使用 `alloc_bytes_remaining_` 变量来记录当前内存块还剩余多少字节， `alloc_ptr_` 遍历来记录在内存块中可以分配的起始地址。

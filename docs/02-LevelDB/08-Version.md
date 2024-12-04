@@ -15,7 +15,9 @@
 
 `VersionSet`信息持久化到`MANIFEST`中。
 
-![leveldb-Version_0](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Version_0.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Version_0.png" style={{ width: '90%' }}/>
+</div>
 
 `Version`变化（即有持久化文件操作）的触发时机有：
 
@@ -25,8 +27,9 @@
 
 `VersionSet`不仅提供不同`Version`之间的管理，还可根据最新`Version`进行合并文件的选择，大致流程如下图：
 
-![leveldb-Version_1](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Version_1.png)
-
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Version_1.png" style={{ width: '90%' }}/>
+</div>
 
 
 * 根据得分，其中`LEVEL0`计算分数公式为`SCORE = 文件数量 / LEVEL0最多允许文件数 `，其他`LEVEL`计算公式为`SCORE = 当前LEVEL文件总大小 / 当前LEVEL允许文件大小`，这样能有效降低`LEVEL0`文件数，降低读放大（`LEVEL0`中读按顺序读）。

@@ -10,22 +10,30 @@
 
 如此这般就能构造出跳表结构，如下图所示。
 
-![leveldb-SkipList-1](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-1.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-1.png" style={{ width: '100%' }}/>
+</div>
 
 
 在这种理想情况下，查找效率变为 `O(logn)` ，例如查找节点 4 流程如下：
 
 1. 首先访问 level2 层，查找到节点 5 时，大于节点 4 ，需要进入节点 1 的下一层。
 
-![leveldb-SkipList-2](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-2.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-2.png" style={{ width: '100%' }}/>
+</div>
 
 2. 访问节点 1 的 level1 层，经过节点 3 ，访问节点 5 时，需要进入节点 3 的下一层。
 
-![leveldb-SkipList-3](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-3.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-3.png" style={{ width: '100%' }}/>
+</div>
 
 3. 访问节点 3 的 level0 层，找到目标节点。
 
-![leveldb-SkipList-4](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-4.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-SkipList-4.png" style={{ width: '100%' }}/>
+</div>
 
 由于链表的构建是动态过程，无法知道某个节点在最优情况下需要处于哪些层，跳表通过随机化的方式来解决这个问题，具体为使第 i 层的节点有概率 p 出现在 i + 1 层。
 

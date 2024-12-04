@@ -20,7 +20,9 @@
 * 取 `1` 字节数据，判断最高比特位是否为 `1` ，如果为 `1` ，取剩余 `7` 比特数据，拼接到结果中，继续取下一个字节数据操作。
 * 如果最高比特位为 `0` ，拼接后结束。
 
-![leveldb-Varint-0](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Varint-0.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-Varint-0.png" style={{ width: '70%' }}/>
+</div>
 
 ## 实现
 

@@ -16,17 +16,23 @@ Slapo 的调度语言分为两部分（主要根据是否修改计算流程，�
 
 图(b) 中的 replace 函数，可以将模块进行等价替换，比如图中的 attention 模块可以用等价的 eff_attn 模块替换，这里就是把 QKV 这几个矩阵 concatenate。图(c) 中的 shared 和 sync 就是用来做 TP 的，把模型切片，然后手动插入 sync 来表示在什么时候同步。
 
-![image-20240808103345014](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808103345014.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808103345014.png" style={{ width: '70%' }}/>
+</div>
 
 ### Schedule Computations
 
 首先提供一个叫 trace 的原语，来构建一颗树（这里和 pytorch 一样），叶子节点就是不可再分的模块比如 Linear。提供了一个 find 的原语，直接在构建的树里面去找是否有定义好的模式（应该就是一个简单的子树查询）。然后是提供的 fuse 原语，调用底层的 DL 编译器去做算子融合。然后也提供了类似的 replace，DL 编译器不给力时可以直接用用户定义的 kernel 来替换。也提供 checkpoint。
 
-![image-20240808105059970](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808105059970.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808105059970.png" style={{ width: '70%' }}/>
+</div>
 
 最后提供了一个 pipeline 并行的处理，如下图，主要是来解决全部分区的问题，用户插入了 pipeline_split 后如图a，白色部分还是得纳入 stage，用一个简单的祖先搜索就搞定了。
 
-![image-20240808111039668](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808111039668.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808111039668.png" style={{ width: '70%' }}/>
+</div>
 
 ### 总结
 
@@ -34,6 +40,10 @@ Slapo 的调度语言分为两部分（主要根据是否修改计算流程，�
 
 从下图给出的 example 看起来，感觉并不能达到所说的能够简化多少开发：他用的 sync 和 shard 我用 torch 一样可以替代，如下下图。find 和 hook 的方式同样也能找到 hook 的方式去做。
 
-![image-20240808111500295](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808111500295.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808111500295.png" style={{ width: '50%' }}/>
+</div>
 
-![image-20240808111714299](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808111714299.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/image-20240808111714299.png" style={{ width: '70%' }}/>
+</div>

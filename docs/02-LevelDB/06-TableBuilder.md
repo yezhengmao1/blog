@@ -5,7 +5,9 @@
 
 如下图所示，逐步介绍 `key-value` 数据是如何从 `MemTable` 结构存储到磁盘文件。
 
-![leveldb-TableBuilder_0](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-TableBuilder_0.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/leveldb-TableBuilder_0.png" style={{ width: '100%' }}/>
+</div>
 
 ### 从 MemTable 到 TableBuilder
 

@@ -15,13 +15,17 @@ Lancet 这篇工作主要讨论：MoE架构下如何提高通信和计算重叠�
 comment: 感觉目前 pytorch 已经有这个功能了，这个不太确定？文章的实现是基于 RAF （TVM） 这个 baseline 不确定其优化。然后是 MoE 架构的假设，如下图，先计算 FFN 梯度（左侧），上一层才是替换 FFN 的专家层（右侧）。
 难道用的模型是 FFN 和专家层交替的？如果画成左侧一开始就是$dXffn$应该也不影响重叠吧？
 
-![反向传播](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/20241203215824.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/20241203215824.png" style={{ width: '70%' }}/>
+</div>
 
 第二种重叠是前向传播的重叠（如下图），（a）是没有重叠的方式；（b）可以认为是 PP 并行的做法，把输入数据按照 batch 维度划分，然后分块计算来提高重叠率，然后将分块的数据合并来计算后续步骤；（c）b中的方式不合并，下一层的 attention 部分继续用分块的数据算；（d）本质上和 c 是一样，我不合并继续算呗。
 
 comment：这种重叠感觉就完全是 GPipe 这种 pp 并行的玩法了，直接把 mini-batch 的数据拆解为若干 macro-batch 去做计算，提高重叠率。
 
-![前向传播](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/20241203220034.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/20241203220034.png" style={{ width: '70%' }}/>
+</div>
 
 作者认为前向传播如果这样分解输入数据后会带来几个问题：
 * 如下图所示，作者假设输入数据经过 Gate 函数后，token 被均分到每个专家，在专家计算完成后，还需要按原理 token 的位置重新收集这些专家的 output，那么你按照 batch size 维度切分后（如图b），我会优先算第一个分块，然后拿到其结果，但我并不能复原为原 output 的样子，因为专家容量有限，第一分块的最后一个 0 只能舍弃。 
@@ -29,7 +33,9 @@ comment：这种重叠感觉就完全是 GPipe 这种 pp 并行的玩法了，�
 
 comment：第一个问题感觉假设很弱，他给的解决方法也很简单。不丢弃就行了（图c）。然后这个问题啰啰嗦嗦说了很大篇幅。这样可以看到其实专家的计算会不均匀。还有一点不明白就是为什么整个 batch 的数据需要均分给不同专家（难道不是 batch 数据中的每一条数据嘛）。
 
-![数据划分](https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/20241203220933.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/20241203220933.png" style={{ width: '70%' }}/>
+</div>
 
 
 ## Weight gradient computation shedule pass
