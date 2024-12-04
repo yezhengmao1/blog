@@ -37,7 +37,8 @@ export default function FooterWrapper(props: Props): JSX.Element {
   return (
     <>
       <Footer {...props} />
-      <div ref={handleContainerInit}></div>
+      <hr style={{ marginTop: '70px' }}></hr>
+      <div ref={handleContainerInit} style={{ marginTop: '70px' }}></div >
     </>
   );
 }
