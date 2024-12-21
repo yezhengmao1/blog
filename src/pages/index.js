@@ -61,7 +61,7 @@ export default function Index() {
                             <br></br>
                             Xinyun Shen, Min Li, <strong>Zhengmao Ye</strong>, Zhenyang Yu, Lei Duan
                             <br></br>
-                            under rebuttal <i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP), 2025.</i>
+                            in <i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP), 2025.</i>
                         </li>
 
                     </ul>
