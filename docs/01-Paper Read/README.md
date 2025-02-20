@@ -2,6 +2,7 @@
 
 ## Machine Learning Systems
 
+* [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](./89-arXiv%2025/Native%20Sparse%20Attention:%20Hardware-Aligned%20and%20Natively%20Trainable%20Sparse%20Attention.md)
 * [DeepSeek-V3 Technical Report](./99-arXiv%2024/DeepSeek-V3%20Technical%20Report.md)
 * [Puzzle: Efficiently Aligning Large Language Models through Light-Weight Context Switch](./93-ATC%2024/Puzzle:%20Efficiently%20Aligning%20Large%20Language%20Models%20through%20Light-Weight%20Context%20Switch.md)
 * [Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning](./91-ASPLOS%2024/Centauri%20Enabling%20Efficient%20Scheduling%20for%20%20Communication-Computation%20Overlap%20in%20Large%20Model%20%20Training%20via%20Communication%20Partitioning.md)
