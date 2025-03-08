@@ -30,7 +30,7 @@ export default function FooterWrapper(props: Props): JSX.Element {
         el: node,
         pageKey: pathname,
         pageTitle: document.title,
-        server: 'https://yezhem.com:23366',
+        server: 'http://yezhem.com:23366',
         site: 'ZhengMao.Ye',
       })
     },
