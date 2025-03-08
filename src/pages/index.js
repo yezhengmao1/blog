@@ -9,7 +9,7 @@ export default function Index() {
             <div className={styles.post}>
                 <article>
                     <div className={styles.profile}>
-                        <img src='img/me.png' className={styles.my_avatar}></img>
+                        <img src='https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/me.png' className={styles.my_avatar}></img>
                         <h1>
                             ZhengMao.Ye
                         </h1>
