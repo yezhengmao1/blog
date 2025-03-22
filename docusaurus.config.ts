@@ -103,6 +103,13 @@ const config: Config = {
       crossorigin: 'anonymous',
     },
   ],
+
+  scripts: [
+    {
+      src: 'https://shynet.yezhem.com/ingress/6622bce5-62e5-4eed-bda1-f3eb70420e8a/script.js',
+      async: true,
+    },
+  ]
 };
 
 export default config;
