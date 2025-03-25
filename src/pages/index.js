@@ -55,15 +55,6 @@ export default function Index() {
                             <br></br>
                             in <i>Proceedings of Very Large Data Bases Conference (VLDB), 2025.</i>
                         </li>
-
-                        <li className={styles.publications}>
-                            <b>Diffusion Counterfactual-Based Anomaly Detection in Class-Imbalanced Data</b>
-                            <br></br>
-                            Xinyun Shen, Min Li, <strong>Zhengmao Ye</strong>, Zhenyang Yu, Lei Duan
-                            <br></br>
-                            in <i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP), 2025.</i>
-                        </li>
-
                     </ul>
                 </div>
 
