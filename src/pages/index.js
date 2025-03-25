@@ -53,7 +53,7 @@ export default function Index() {
                             <br></br>
                             <strong>Zhengmao Ye</strong>, Dengchun Li, Zetao Hu, Tingfen Lan, Sha Jian, Sicong Zheng, Lei Duan, Jie Zuo, Hui Lu, Yuanchun Zhou, Mingjie Tang
                             <br></br>
-                            under revision <i>Proceedings of Very Large Data Bases Conference (VLDB), 2025.</i>
+                            in <i>Proceedings of Very Large Data Bases Conference (VLDB), 2025.</i>
                         </li>
 
                         <li className={styles.publications}>
