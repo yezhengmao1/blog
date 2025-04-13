@@ -82,7 +82,6 @@ const config: Config = {
         { to: '/blog', label: 'Blog', position: 'right' },
         { to: '/project', label: 'Projects', position: 'right' },
         { to: '/publication', label: "Publications", position: 'right' },
-        { type: 'localeDropdown', position: 'right' },
       ],
     },
     footer: {
