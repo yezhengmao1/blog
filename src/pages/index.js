@@ -8,43 +8,40 @@ export default function Index() {
         <Layout title="About ZhengMao.Ye">
             <div className={styles.post}>
                 <article>
+
                     <div className={styles.profile}>
                         <img src='https://yezhem.oss-cn-chengdu.aliyuncs.com/blog_img/me.png' className={styles.my_avatar}></img>
-                        <h1>
-                            ZhengMao.Ye
-                        </h1>
+                        <div>
+                            <h2>Zhengmao Ye</h2>
+                            <p>
+                                email: <a href='mailto:yezhengmaolove@gmail.com'>yezhengmaolove@gmail.com</a>
+                            </p>
+                        </div>
                     </div>
 
-                    <div className={styles.intro}>
-                        <p>
-                            I am a master student in computer science at
-                            <a href='https://ids-lab-asia.github.io/'> IDs Lab </a>
-                            of Sichuan University under Prof.
-                            <a href='https://merlintang.github.io/index.html'>Mingjie Tang.</a>
-                        </p>
+                    <p>
+                        I am a master student in computer science at
+                        <a href='https://ids-lab-asia.github.io/'> IDs Lab </a>
+                        of Sichuan University under Prof.
+                        <a href='https://merlintang.github.io/index.html'>Mingjie Tang.</a>
+                    </p>
 
-                        <p>
-                            Currently, I am working on Large Language Model system.
-                            For example, optimizing parallel strategies for efficient fine-tuning of Large Language Models (LLMs).
-                        </p>
+                    <p>
+                        Before joining Sichuan University, I earned my bachelor’s degree
+                        from Southwest Jiaotong University
+                        and worked as a member of the technical staff at Huawei and SenseTime.
+                    </p>
 
-                        <p>
-                            Before joining Sichuan University, I earned my bachelor’s degree
-                            from Southwest Jiaotong University
-                            and worked as a member of the technical staff at Huawei and SenseTime.
-                        </p>
+                    <p>
+                        Currently, I am working on Large Language Model system.
+                        For example, optimizing parallel strategies for efficient fine-tuning of Large Language Models (LLMs).
+                    </p>
 
-                        <p>
-                            I am open to other opportunities and new research,
-                            so please feel free to reach me at my email
-                            <a href='mailto:yezhengmaolove@gmail.com'> yezhengmaolove@gmail.com</a>
-                        </p>
+                    <p>
+                        I am open to other opportunities and new research,
+                        so please feel free to reach me at my email.
+                    </p>
 
-                    </div>
-                </article>
-
-
-                <div>
                     <h2>Selected Publications</h2>
 
                     <ul>
@@ -56,9 +53,9 @@ export default function Index() {
                             in <i>Proceedings of Very Large Data Bases Conference (VLDB), 2025.</i>
                         </li>
                     </ul>
-                </div>
+                </article>
 
-            </div>
-        </Layout>
+            </div >
+        </Layout >
     );
 }

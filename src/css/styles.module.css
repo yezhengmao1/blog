@@ -1,6 +1,6 @@
 .post {
     display: block;
-    max-width: 800px;
+    max-width: 768px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
@@ -8,21 +8,36 @@
     font-weight: 300;
 }
 
-.profile {
-    display: block;
-    width: 30%;
-    float: right !important;
-    align-items: center;
-}
-
-
-.intro {
-    width: 60%;
+@media (max-width: 768px) {
+    .post {
+        max-width: 100%;
+        padding: 0 10px;
+    }
 }
 
 .my_avatar {
-    border-radius: 0px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
 }
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.profile h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.profile p {
+    margin: 0;
+    font-size: 1rem;
+}
+
 
 .publications {
     margin-bottom: 10px;
