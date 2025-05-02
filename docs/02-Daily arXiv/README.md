@@ -7,5 +7,3 @@ Topic: "Large Language Model, DL training system, DL inference system"
 * [2025-05-01-15-00](./2025-05-01-15-00.md)
 
 * [2025-05-02-16-25](./2025-05-02-16-25.md)
-
-* [2025-05-02-16-25](./2025-05-02-16-25.md)
